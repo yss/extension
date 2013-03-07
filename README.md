@@ -1,5 +1,4 @@
-![yss](yss/static/img/icon-16.png)
-# YSS
+# ![yss](yss/static/img/icon-48.png) YSS
 一切的一切都是为了更好的生活。更详细的说明和安装请参考：<http://yansong.me/extension>
 
 ## 功能介绍
@@ -10,4 +9,4 @@
 
 ### 更多功能
 
-如果你觉得还有什么需求，可以更我说。我的email：yss.nelson@gmail.com
+如果你觉得还有什么需求，可以跟我说。我的email：yss.nelson@gmail.com
