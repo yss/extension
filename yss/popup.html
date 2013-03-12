@@ -5,8 +5,8 @@
     <title>Popup for YSS</title>
     <style>
         .refresh-form { width:260px; }
-        .refresh-form input { width:190px; }
-        .refresh-form button { height:24px; }
+        input[type=text] { width:190px; }
+        button { height:24px; }
     </style>
     <!--<link rel="stylesheet" href="static/css/bootstrap-responsive.css" type="text/css" />-->
 </head>
@@ -17,8 +17,18 @@
     <button type="submit">点击定时刷新</button>
     <button type="button" id="stop-refresh">停止刷新</button>
 </form>
+<h3>中文转UTF-8编码</h3>
+<form action="" name="transcodeForm" class="transcode-form">
+    <p><label for="">中文：<input type="text" name="gbk" value="" placeholder="这里输入中文，或中英文混杂的文字" /></label></p>
+    <p><label for="">UTF-8：<input type="text" name="utf" value="" placeholder="这里输入UTF-8编码" /></label></p>
+    <button type="submit">中文转UTF-8</button>
+    <button type="button" name="utftogbk">UTF-8转中文</button>
+    <button type="reset">清空</button>
+</form>
 
 <script src="static/js/zepto.js"></script>
 <script src="static/js/popup.js"></script>
+<script>_gaq = [['_setAccount', 'UA-31716874-1'],['_trackPageview']]</script>                                        
+<script src="http://www.google-analytics.com/ga.js" async></script>
 </body>
 </html>

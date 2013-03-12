@@ -146,3 +146,27 @@ $(function() {
         return false;
     });
 });
+
+$(function() {
+    var transcodeForm = document.forms.transcodeForm;
+    $(transcodeForm).submit(function() {
+        var word = this.gbk.value.trim();
+        if (word) {
+            this.utf.value = encodeURIComponent(word);
+            this.utf.select();
+        } else  {
+            showPop('请输入中文文字。');
+        }
+        return false;
+    });
+    $(transcodeForm.utftogbk).click(function() {
+        var word = transcodeForm.utf.value.trim();
+        if (word) {
+            transcodeForm.gbk.value = decodeURIComponent(word);
+            transcodeForm.gbk.select();
+        } else  {
+            showPop('请输入UTF-8编码后的文字。');
+        }
+        return false;
+    });
+});
