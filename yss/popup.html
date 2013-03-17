@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Popup for YSS</title>
     <style>
-        .refresh-form { width:260px; }
-        input[type=text] { width:190px; }
+        .refresh-form { width:266px; }
+        input[type=text] { padding:3px 5px; width:180px; line-height:18px; }
         button { height:24px; }
+        summary { margin:-5px; padding:5px 0; cursor:pointer; background:#0cc; outline:none; }
+        details { margin:5px 0; padding:5px; border:1px solid #0cc; }
     </style>
     <!--<link rel="stylesheet" href="static/css/bootstrap-responsive.css" type="text/css" />-->
 </head>
@@ -14,17 +16,20 @@
 <form action="" name="refreshForm" class="refresh-form">
     <p><label>时间：<input type="text" name="time" placeholder="定时刷新的间隔时间，不填默认6秒" /></label></p>
     <p><label>网址：<input type="text" name="url" placeholder="输入网页地址，不填默认为当前网页地址。" /></label></p>
+    <p><label>JS：<input type="text" name="js" placeholder="每次刷新后都将会执行这段JS代码。" /></label></p>
     <button type="submit">点击定时刷新</button>
     <button type="button" id="stop-refresh">停止刷新</button>
 </form>
-<h3>中文转UTF-8编码</h3>
-<form action="" name="transcodeForm" class="transcode-form">
-    <p><label for="">中文：<input type="text" name="gbk" value="" placeholder="这里输入中文，或中英文混杂的文字" /></label></p>
-    <p><label for="">UTF-8：<input type="text" name="utf" value="" placeholder="这里输入UTF-8编码" /></label></p>
-    <button type="submit">中文转UTF-8</button>
-    <button type="button" name="utftogbk">UTF-8转中文</button>
-    <button type="reset">清空</button>
-</form>
+<details>
+    <summary>一、中文与UTF-8编码互转</summary>
+    <form action="" name="transcodeForm" class="transcode-form">
+        <p><label for="">中文：<input type="text" name="gbk" value="" placeholder="这里输入中文，或中英文混杂的文字" /></label></p>
+        <p><label for="">UTF-8：<input type="text" name="utf" value="" placeholder="这里输入UTF-8编码" /></label></p>
+        <button type="submit">中文转UTF-8</button>
+        <button type="button" name="utftogbk">UTF-8转中文</button>
+        <button type="reset">清空</button>
+    </form>
+</details>
 
 <script src="static/js/zepto.js"></script>
 <script src="static/js/popup.js"></script>

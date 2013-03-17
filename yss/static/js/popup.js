@@ -6,6 +6,7 @@
  *      1. [2013-03-04 improve] 重构代码，提出公用层，增加了提示。
  *      2. [2013-03-07 bugfix] 重复点击定时刷新导致的触发多个定时刷新，并且不能停止的问题。
  *      3. [2013-03-08 bugfix] 每次点右上角的图片，其实都相当于新开一个页面，这样的话，就不能记录上次是否已点击刷新了。这样以来，就直接使用之前加一个clearInterval()，第一次用，会报错哦~
+ *      4. [2013-03-16 improve] 使用summary和details，增加动态刷新时执行一段js代码。
  */
 // 弹出层是否第一次执行
 var POP_STATUS = true;
@@ -113,12 +114,13 @@ $(function() {
             return;
         }
         isRefreshed = true;
-        exec(function refresh(time, url) {
+        exec(function refresh(time, url, script) {
             time = time || 6;
             url = url || window.location.href;
             var doc = document.documentElement,
                 height = doc.clientHeight,
                 width = doc.clientWidth;
+
             function run() {
                 var frameId = 'ys-refresh-iframe',
                     frame = document.getElementById(frameId);
@@ -126,7 +128,10 @@ $(function() {
                     document.body.innerHTML = '<div id="' + frameId + '"></div>';
                     frame = document.getElementById(frameId);
                 }
-                frame.innerHTML = '<iframe src="' + url +'" height="' + height + '" width="' + width + '" frameborder="0" allowtransparent="true" scrolling="yes"></iframe>';
+                frame.innerHTML = '<iframe src="' + url +'" height="' + height + '" width="' + width + '" frameborder="0" allowtransparent="true" scrolling="yes" name="refreshFrame"></iframe>';
+                script && (frame.firstChild.onload = function() {
+                    eval('(window.frames["refreshFrame"].window.' + script + ')');
+                })
             }
             run();
             return setInterval(run, time * 1000);
@@ -134,7 +139,7 @@ $(function() {
         // exec(NAME + '=refresh(' + (this.time.value.trim() || '') + ',' + this.url.value.trim() + ');');
         // 防止重复点击刷新，但是第一次会报错，因为没有定义那个值。
         exec(NAME + ' && clearInterval(' + NAME + ');');
-        execFn('refresh', [this.time.value.trim(), this.url.value.trim()], NAME);
+        execFn('refresh', [this.time.value.trim(), this.url.value.trim(), this.js.value.trim()], NAME);
         showPop('正在自动刷新中...');
         return false;
     });
