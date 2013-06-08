@@ -1,0 +1,19 @@
+{
+    "name": "游脚印",
+    "version": "1.0",
+    "description": "脚印是全球最详细的景点图片大全，收藏你去过和想去的地方，寻找和发现最佳旅伴，了解各风土人情以及发现旅途中有意思的故事。一有爱就出发——游脚印——让旅游更有趣。",
+    "manifest_version": 2,
+    "icons": {
+        "128": "logo-128.png"
+    },
+    "app": {
+        "urls": ["http://www.youjiaoyin.com"],
+        "launch": {
+            "web_url": "http://www.youjiaoyin.com"
+        }
+    },
+    "permissions": [
+        "unlimitedStorage",
+        "notifications"
+    ]
+}
